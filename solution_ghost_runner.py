@@ -76,6 +76,7 @@ while True:
             if event.key == pygame.K_RIGHT:
                 ghost.moveRight()
                
+    # Checking if the value of 'state' is 'play'
     if state=="play":          
         groundy=groundy+3 
         if groundy>=0:
@@ -87,11 +88,17 @@ while True:
         d2.display()
         ghost.display()
         
+    # Checking if the value of 'state' is 'over
     if state=="over":
+        # Adding the text "Game Over" to be displayed on the screen if the game gets over
         over_text=score_font.render("Game Over", False, (255,255,0))  
+        
+        # Display the 'over_text' at the position [230,250]
         screen.blit(over_text,[230,250])
     
+    # Checking if 'ghost.rect' collides with 'd1.rect2' or with 'd2.rect2'
     if ghost.rect.colliderect(d1.rect2) or ghost.rect.colliderect(d2.rect2):
+        # Assigning the value 'over' to 'state'
         state="over"
     
     pygame.display.update() 
